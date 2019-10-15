@@ -1,0 +1,5 @@
+Compile citrus-options and append to C++ search path:
+
+bash$> CXXFLAGS="-I../citrus-options/src -I../../citrus-options/src" ./configure
+
+// Anders Lövgren, 2019-10-15

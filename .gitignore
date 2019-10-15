@@ -1,0 +1,16 @@
+aclocal.m4
+compile
+config.guess
+config.h
+config.sub
+configure
+configure.scan
+depcomp
+.dirstamp
+install-sh
+libtool
+*.log
+ltmain.sh
+Makefile
+Makefile.in
+missing
