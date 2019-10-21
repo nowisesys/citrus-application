@@ -91,7 +91,7 @@ namespace Citrus::Application {
 
                 virtual ~Application() = default;
 
-                void Start();
+                virtual void Start() final;
 
             private:
                 void Setup() const;
