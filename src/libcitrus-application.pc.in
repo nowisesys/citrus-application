@@ -4,7 +4,7 @@ libdir=@libdir@
 includedir=@includedir@
 
 Name: libcitrus-application
-Description: Application launcher for C++
+Description: Application executor and monitor for C++
 URL: https://nowise.se/oss/citrus/application
 Version: @VERSION@
 Requires: 

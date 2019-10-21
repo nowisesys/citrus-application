@@ -1,10 +1,10 @@
 # Citrus C++
 
-## Application launcher for C++ (citrus-application)
+## Application executor and monitor for C++ (citrus-application)
 
-Provides an OOP approach for running applications. The application is implemented as an class providing lifetime methods to handle events. An optional monitor can be applied on the running process.
+Provides an OOP approach for running applications. The application core is implemented as an derived class providing protected methods to handle lifetime events. An optional monitor can be applied on the running process.
 
-Command line parsing is handled premature to starting the application so that the programmer can focus on essential task, like implementing the business logic instead. An minimal implementation needs to at least define the abstract Run() method.
+Command line parsing is handled premature by the base class so that the programmer can focus on the essential part, like implementing the business logic instead. An minimal implementation needs to at least define the abstract Run() method.
 
 ## Example
 
@@ -76,7 +76,7 @@ Please examine the header [application.hpp](src/application.hpp) for all virtual
 
 ## Requirements
 
-Command line parsing is handled by citrus-options and should be installed.
+Command line parsing is handled by citrus-options and should be installed as a pre-requisite.
 
 ## Building
 
