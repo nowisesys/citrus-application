@@ -2,7 +2,7 @@ AM_CPPFLAGS = -I../src
 LIBADD = -L../src -lcitrus-application
 
 noinst_PROGRAMS = \
-    simple
+    report
 
-simple_SOURCES = simple.cpp
-simple_LDADD = ../src/libcitrus-application.la
+report_SOURCES = report.cpp
+report_LDADD = ../src/libcitrus-application.la
