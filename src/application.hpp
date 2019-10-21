@@ -99,10 +99,11 @@ namespace Citrus::Application {
             protected:
                 virtual void Run(const Options & options) = 0;
 
-                virtual void OnInitialize() {} // Ready to start
-                virtual void OnStarting() {}   // Called when starting
-                virtual void OnFinished() {}   // Called when finished
-                virtual void OnCleanup() {}    // Called for cleanup
+                virtual void OnException(const std::exception &) { throw; } // Handle trapped exception
+                virtual void OnInitialize() {}                              // Ready to start
+                virtual void OnStarting() {}                                // Called when starting
+                virtual void OnFinished() {}                                // Called when finished
+                virtual void OnCleanup() {}                                 // Called for cleanup
 
                 virtual void Usage() const {}   // Display usage help
                 virtual void Version() const {} // Display version info

@@ -30,10 +30,14 @@ namespace Citrus::Application {
 
         void Runtime::Execute(const Options & options)
         {
-                application->Setup();
-                application->OnStarting();
-                application->Run(options);
-                application->OnFinished();
+                try {
+                        application->Setup();
+                        application->OnStarting();
+                        application->Run(options);
+                        application->OnFinished();
+                } catch (const std::exception & exception) {
+                        application->OnException(exception);
+                }
         }
 
 } // namespace Citrus::Application

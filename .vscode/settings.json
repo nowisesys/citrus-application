@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.inc": "php",
+        "*.cgi": "perl",
+        "stdexcept": "cpp"
+    }
+}

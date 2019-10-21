@@ -29,40 +29,13 @@ class MyApplication : public Application
     protected:
         void Run(const Options & options) override
         {
-                std::cout << "Running\n";
+                std::cout << "Throwed\n";
+                throw std::runtime_error("Oops ;-)");
         }
 
-        void OnInitialize() override
+        void OnException(const std::exception & exception)
         {
-                std::cout << "Initialize\n";
-        }
-
-        void OnStarting() override
-        {
-                std::cout << "Starting\n";
-        }
-
-        void OnFinished() override
-        {
-                std::cout << "Finished\n";
-        }
-
-        void OnCleanup() override
-        {
-                std::cout << "Cleanup\n";
-        }
-
-        void Usage() const override
-        {
-                std::cout << "Usage: " << options.GetProgram() << " [...options]\n"
-                          << "Options: \n"
-                          << "    -h, --help:    This casual help\n"
-                          << "    -V, --version: Show version information\n";
-        }
-
-        void Version() const override
-        {
-                std::cout << options.GetProgram() << " v1.0\n";
+                std::cout << "Trapped: " << exception.what() << "\n";
         }
 };
 
