@@ -27,7 +27,7 @@ class MyApplication : public Application
                 throw std::runtime_error("Oops ;-)");
         }
 
-        void OnException(const std::exception & exception)
+        void OnException(const std::exception & exception) override
         {
                 std::cout << "Trapped: " << exception.what() << "\n";
         }
