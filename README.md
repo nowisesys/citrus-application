@@ -4,7 +4,7 @@
 
 Provides an OOP approach for running applications. The application is implemented as an class providing lifetime methods to handle events. An optional monitor can be applied on the running process.
 
-Command line parsing is handled premature to starting the application so that the programmer can focus on essential task, like implementing the business logic instead. 
+Command line parsing is handled premature to starting the application so that the programmer can focus on essential task, like implementing the business logic instead. An minimal implementation needs to at least define the abstract Run() method.
 
 ## Example
 
@@ -19,12 +19,12 @@ class MyApplication : public Application
                         : Application(argc, argv)
                 {}
 
+        protected:
                 void Run(const Options & options) override 
                 {
                         // Application code goes here
                 }
 
-        protected:
                 void Usage() const override 
                 {
                         // Show usage information
