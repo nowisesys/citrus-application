@@ -17,32 +17,23 @@
 
 namespace Citrus::Application {
 
-        Application::Application(int argc, const char ** argv)
-            : options(argc, argv)
+        Runtime::Runtime(Application * application)
+            : application(application)
         {
+                application->OnInitialize();
         }
 
-        Application::Application(const Options & options)
-            : options(options)
+        Runtime::~Runtime()
         {
+                application->OnCleanup();
         }
 
-        void Application::Start()
+        void Runtime::Execute(const Options & options)
         {
-                Runtime runtime(this);
-                runtime.Execute(options);
-        }
-
-        void Application::Setup() const
-        {
-                if (options.HasOption("-h") || options.HasOption("--help")) {
-                        Usage();
-                        exit(0);
-                }
-                if (options.HasOption("-V") || options.HasOption("--version")) {
-                        Version();
-                        exit(0);
-                }
+                application->Setup();
+                application->OnStarting();
+                application->Run(options);
+                application->OnFinished();
         }
 
 } // namespace Citrus::Application

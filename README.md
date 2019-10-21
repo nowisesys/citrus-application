@@ -12,11 +12,11 @@ Command line parsing is handled premature to starting the application so that th
 #include <iostream>
 #include <citrus/application.hpp>
 
-class Application : public ConsoleApplication 
+class MyApplication : public Application 
 {
         public:
-                Application(int argc, const char **argv)
-                        : ConsoleApplication(argc, argv)
+                MyApplication(int argc, const char **argv)
+                        : Application(argc, argv)
                 {}
 
                 void Run(const Options &option) 
@@ -38,7 +38,7 @@ class Application : public ConsoleApplication
 
 int main(int argc, const char **argv)
 {
-        Application app(argc, argv);
+        MyApplication app(argc, argv);
         app.Start();
 
         return 0;

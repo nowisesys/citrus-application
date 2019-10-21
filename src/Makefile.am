@@ -7,7 +7,8 @@ otherincludedir = $(includedir)/citrus
 otherinclude_HEADERS = application.hpp
 
 lib_LTLIBRARIES = libcitrus-application.la
-libcitrus_application_la_SOURCES = application.hpp application.cpp
+libcitrus_application_la_SOURCES = \
+    application.hpp application.cpp runtime.cpp
 
-libcitrus_application_la_LDFLAGS  = -version-info 1:0:0
+libcitrus_application_la_LDFLAGS  = -version-info 1:0:0 -lcitrus-options
 libcitrus_application_la_CXXFLAGS = -DLIBCITRUS_EXPORTS=1

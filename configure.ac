@@ -22,6 +22,7 @@ AC_PROG_MAKE_SET
 LT_INIT
 
 # Checks for libraries.
+# PKG_CHECK_MODULES([CITRUS_OPTIONS], [citrus-options >= 1], AC_DEFINE([HAVE_LIBCITRUS_OPTIONS], [], [Define to 1 if you have a functional citrus-options library.]))
 
 # Checks for header files.
 AC_CHECK_HEADERS([string.h])

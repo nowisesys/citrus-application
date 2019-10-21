@@ -16,11 +16,15 @@
 #ifndef LIBCITRUS_APPLICATION_HPP
 #define LIBCITRUS_APPLICATION_HPP
 
-// #include <map>
-// #include <string>
-// #include <vector>
-
+#if defined(__has_include)
+#if __has_include(<cirtus/options.hpp>)
+#include <cirtus/options.hpp>
+#else
 #include "options.hpp"
+#endif
+#else
+#include "options.hpp"
+#endif
 
 #if defined(WIN32) || defined(_WINDOWS) || defined(__CYGWIN__)
 /* Define LIBCITRUS_EXPORTS when building library on windows. */
@@ -50,21 +54,59 @@
 #endif
 #endif
 
+#include <iostream>
+
 namespace Citrus::Application {
 
         using Options = Citrus::Options;
 
-        class LIBCITRUS_API_PUBLIC ConsoleApplication
+        class Application;
+
+        class LIBCITRUS_API_PUBLIC Runtime
         {
             public:
-                void Start() const;
+                Runtime(Application * application);
+                ~Runtime();
 
-            protected:
-                void Main(int argc, const char ** argv);
-
-                virtual void Run(const Options & options) const = 0;
+                void Execute(const Options & options);
 
             private:
+                Application * application;
+        };
+
+        class LIBCITRUS_API_PUBLIC Application
+        {
+                friend class Runtime;
+
+            public:
+                Application(int argc, const char ** argv);
+                Application(const Options & options);
+
+                Application() = delete;
+                Application(const Application &) = delete;
+                Application(Application &&) = delete;
+
+                Application & operator=(const Application &) = delete;
+                Application & operator=(Application &&) = delete;
+
+                virtual ~Application() = default;
+
+                void Start();
+
+            private:
+                void Setup() const;
+
+            protected:
+                virtual void Run(const Options & options) = 0;
+
+                virtual void OnInitialize() {} // Ready to start
+                virtual void OnStarting() {}   // Called when starting
+                virtual void OnFinished() {}   // Called when finished
+                virtual void OnCleanup() {}    // Called for cleanup
+
+                virtual void Usage() const {}   // Display usage help
+                virtual void Version() const {} // Display version info
+
                 Options options;
         };
 
