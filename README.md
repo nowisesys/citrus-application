@@ -19,7 +19,7 @@ class MyApplication : public Application
                         : Application(argc, argv)
                 {}
 
-                void Run(const Options &option) 
+                void Run(const Options & options) override 
                 {
                         // Application code goes here
                 }
@@ -44,11 +44,39 @@ int main(int argc, const char **argv)
         return 0;
 }
 ```
+
+### Lifetime methods
+
+The base class provides protected lifetime methods that can be overridden to alter default behavior, for example trap standard exceptions.
+
+```c++
+class MyApplication : public Application
+{
+    protected:
+                ...
+
+        void OnInitialize() override
+        {
+                // Allocate resources
+        }
+
+        void OnCleanup() override
+        {
+                // Release resources
+        }
+
+        void OnException(const std::exception & exception)
+        {
+                // Suggested: log, wait and restart application
+        }
+};
+```
+
 Please examine the header [application.hpp](src/application.hpp) for all virtual methods who's behavior can be overridden.
 
 ## Requirements
 
-Command line parsing is handled by citrus-options that should be installed.
+Command line parsing is handled by citrus-options and should be installed.
 
 ## Building
 
