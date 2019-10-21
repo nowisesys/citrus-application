@@ -20,12 +20,6 @@ using namespace Citrus::Application;
 
 class MyApplication : public Application
 {
-    public:
-        MyApplication(int argc, const char ** argv)
-            : Application(argc, argv)
-        {
-        }
-
     protected:
         void Run(const Options & options) override
         {
@@ -41,7 +35,7 @@ class MyApplication : public Application
 
 int main(int argc, const char ** argv)
 {
-        MyApplication app(argc, argv);
+        MyApplication app;
         app.Start();
 
         return 0;

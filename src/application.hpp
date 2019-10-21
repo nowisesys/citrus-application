@@ -79,10 +79,10 @@ namespace Citrus::Application {
                 friend class Runtime;
 
             public:
+                Application() = default;
                 Application(int argc, const char ** argv);
                 Application(const Options & options);
 
-                Application() = delete;
                 Application(const Application &) = delete;
                 Application(Application &&) = delete;
 
