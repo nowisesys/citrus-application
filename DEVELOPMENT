@@ -1,5 +1,5 @@
-Compile citrus-options and append to C++ search path:
+For compile/linking with locally installed citrus-options during development:
 
-bash$> CXXFLAGS="-I../citrus-options/src -I../../citrus-options/src" ./configure
+    bash$> CXXFLAGS="-I../citrus-options/src -I../../citrus-options/src" LDFLAGS="-L../../citrus-options/src" ./configure
 
 // Anders Lövgren, 2019-10-15
